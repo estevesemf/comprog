@@ -49,7 +49,8 @@
  *          naoEhZero(7) -> 1
  */
 int32_t naoEhZero(int32_t x) {
-  //  Negamos duas vezes, pois transforma o contrário de 0 em um, e não no proprio número.
+  /*  Negamos o número duas vezes pois caso o número seja zero, continuamos com zero, e no caso contrário, todos os números (que após serem negados uma vez viram zero) retornam 1.
+  */
     return !!x;
 }
 
