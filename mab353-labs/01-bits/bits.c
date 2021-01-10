@@ -270,7 +270,7 @@ int32_t byteEmP(int32_t x, uint8_t p) {
  */
 int32_t negacaoLogica(int32_t x) {
 
-    return (~(((x>>6)+(x>>5)+(x>>4)+(x>>3)+(x>>2)+(x>>1)+x)&0xF0000001))&0x00000001;
+    return (~(((x>>6)+(x>>5)+(x>>4)+(x>>3)+(x>>2)+(x>>1)+x))&0x00000001;
 }
 
 void teste(int32_t saida, int32_t esperado) {
