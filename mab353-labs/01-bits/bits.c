@@ -23,7 +23,7 @@
  * Assinatura:
  *      Aluno: <Esteves Emmanuel Melo Ferreira e João Victor de Miranda Gadelha>
  *      DRE: <117029640,117223157>
- *      versão do GCC utilizada: XX.XX.XX
+ *      versão do GCC utilizada: 8.3.0 (Uos 8.3.0.3-3+rebuild)   
  *
  */
 
@@ -170,7 +170,7 @@ int32_t bitwiseAnd(int32_t x, int32_t y) {
  */
 int32_t ehIgual(int32_t x, int32_t y) {
     /*Como o ou-exclusivo testa bit a bit se os valores são iguias ,
-    retornando 0x0 apenas quando isso for satisfeito*/
+    retornando 0 apenas quando isso for satisfeito, porém quero retornar 1, então basta negar .*/
     return !(x^y);
 }
 
@@ -220,6 +220,7 @@ int32_t mult7(int32_t x) {
  *
  */
 int32_t bitEmP(int32_t x, uint8_t p) {
+  
     return (x>>p) & 0x00000001;
 }
 
