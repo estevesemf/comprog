@@ -269,9 +269,10 @@ int32_t byteEmP(int32_t x, uint8_t p) {
  *
  */
 int32_t negacaoLogica(int32_t x) {
-
-    return (~(((x>>6)+(x>>5)+(x>>4)+(x>>3)+(x>>2)+(x>>1)+x))&0x00000001;
-}
+    /*Como nós sabemos que apenas no caso do 0 o valor do sinal positivo e o complemento a dois são os mesmos(no caso, 0),
+    logo basta fazer um OR comparando os números(bit de sinal), para chegar neles shifitamos por 31, para colocálo no bit de menor valor.
+    Após encontrar o valor(que só será 0 caso x sejá 0 e 1 caso ele seja diferente de 0), então somamos 1, pra cumprir os requistos do enunciado. )*/
+    return ((x >> 31) | ((~x + 1) >> 31))+1 ;
 
 void teste(int32_t saida, int32_t esperado) {
     static uint8_t test_number = 0;
