@@ -220,7 +220,8 @@ int32_t mult7(int32_t x) {
  *
  */
 int32_t bitEmP(int32_t x, uint8_t p) {
-  
+    /* Ao shiftarmos x p vezes para a direita, deixamos o bit da posição p no bit menos significativo, e ao usarmos a máscara, pegas o valor que estava no bit p(que agora se encontra no bit menos significativo)
+    */
     return (x>>p) & 0x00000001;
 }
 
@@ -247,6 +248,8 @@ int32_t bitEmP(int32_t x, uint8_t p) {
  *
  */
 int32_t byteEmP(int32_t x, uint8_t p) {
+    /*Ao shiftarmos p 3 vezes para a esquerda, estamos o multiplicando por 8, que serve para equivaler p ao número de bytes, e depois, com auxílio da máscara, pegamos o valor dele,que agora se encontra no byte mais a direita do número) 
+    */
     return (x>>(p<<3))&0x000000FF;
 }
 
