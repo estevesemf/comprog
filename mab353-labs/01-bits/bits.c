@@ -187,6 +187,8 @@ int32_t ehIgual(int32_t x, int32_t y) {
  *          mult7(7) -> 49
  */
 int32_t mult7(int32_t x) {
+    /* Ao shiftarmos três casas para a esquerda, estamos efetuando uma multiplicação por oito, e ao diminuirmos uma vez o número do resultado dessa multiplicação, encontramos a multiplicação por 7
+    */
     return (x<<3)-x;
 }
 
