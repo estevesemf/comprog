@@ -69,7 +69,7 @@ int32_t naoEhZero(int32_t x) {
  *          ehPar(7) -> 0
  */
 int32_t ehPar(int32_t x) {
-    /*Todo número binário ímpar deve ter o ultim,o algarismo,igual a 1. Logo, basta usar a mascara,
+    /*Todo número binário ímpar deve ter o último algarismo,igual a 1. Logo, basta usar a mascara,
     para poder manusear apenas o ultimo bit, fazendo isto, resta negar, para cumprir os requisitos do enunciado.*/
     return !(x & 0x00000001);
 }
@@ -220,7 +220,7 @@ int32_t mult7(int32_t x) {
  *
  */
 int32_t bitEmP(int32_t x, uint8_t p) {
-    /* Ao shiftarmos x p vezes para a direita, deixamos o bit da posição p no bit menos significativo, e ao usarmos a máscara, pegas o valor que estava no bit p(que agora se encontra no bit menos significativo)
+    /* Ao shiftarmos x p vezes para a direita, deixamos o bit da posição p no bit menos significativo, e ao usarmos a máscara, pegamos o valor que estava no bit p(que agora se encontra no bit menos significativo)
     */
     return (x>>p) & 0x00000001;
 }
