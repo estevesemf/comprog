@@ -21,8 +21,8 @@
  *      - As resoluções com menos operações do que a do monitor terão bonificação.
  *
  * Assinatura:
- *      Aluno: <nome>
- *      DRE: <DRE>
+ *      Aluno: <Esteves Emmanuel Melo Ferreira e João Victor de Miranda Gadelha>
+ *      DRE: <117029640,117223157>
  *      versão do GCC utilizada: XX.XX.XX
  *
  */
@@ -49,6 +49,7 @@
  *          naoEhZero(7) -> 1
  */
 int32_t naoEhZero(int32_t x) {
+  //  Negamos duas vezes, pois transforma o contrário de 0 em um, e não no proprio número.
     return !!x;
 }
 
@@ -67,6 +68,8 @@ int32_t naoEhZero(int32_t x) {
  *          ehPar(7) -> 0
  */
 int32_t ehPar(int32_t x) {
+    /*Todo número binário ímpar deve ter o ultim,o algarismo,igual a 1. Logo, basta usar a mascara,
+    para poder manusear apenas o ultimo bit, fazendo isto, resta negar, para cumprir os requisitos do enunciado.*/
     return !(x & 0x00000001);
 }
 
@@ -86,6 +89,9 @@ int32_t ehPar(int32_t x) {
  *          mod8(10) -> 2
  */
 int32_t mod8(int32_t x) {
+        /*Como na questão acima, para obter o módulo de 8 basta saber quais os ultimos 3 digitos em binário,
+        logo basta utilizar a máscara para selecionar.
+        */
         return x & 0x00000007 ;
 }
 
@@ -103,6 +109,8 @@ int32_t mod8(int32_t x) {
  *          ehPositivo(-343) -> 0
  */
 int32_t ehPositivo(int32_t x) {
+  /*Para saber se um número binário é negativo, basta saber se o primeiro digito é 1, como está em hexadecimal,
+  o primeiro byte tem que maior que oito. Resolvemos isto usando a mascara para selecionar, e depois negamos.*/
     return !(x & 0x80000000);
 }
 
@@ -120,6 +128,7 @@ int32_t ehPositivo(int32_t x) {
  *          negativo(42) -> -42
  */
 int32_t negativo(int32_t x) {
+  /*Basta utilzar a lógica de complemento a Dois, invertendo os bitis e somando 1. */
     return ~x+1 ;
 }
 
@@ -139,7 +148,9 @@ int32_t negativo(int32_t x) {
  *              11 & 1011 -> 0011
  */
 int32_t bitwiseAnd(int32_t x, int32_t y) {
-
+    /*Usando o Segundo teorema de De Morgan, basta negar(inverter os bits) de cada valor,
+     pois negando o OR dos dois(que já estão invertidos), podemos transformar em um AND com os dois negados separados,
+     como já estavam negados anteriormente, mantem-se os valores.*/
     return ~((~x)|(~y)) ;
 }
 
@@ -152,12 +163,13 @@ int32_t bitwiseAnd(int32_t x, int32_t y) {
  *
  *      Retorna 1 se x == y, 0 caso contrário
  *
- *      Exemplo:
+ *      Exemplo:-1
  *          ehIgual(10, 10) -> 1
  *          ehIgual(16, 8) -> 0
  */
 int32_t ehIgual(int32_t x, int32_t y) {
-
+    /*Como o ou-exclusivo testa bit a bit se os valores são iguias ,
+    retornando 0x0 apenas quando isso for satisfeito*/
     return !(x^y);
 }
 
@@ -175,7 +187,7 @@ int32_t ehIgual(int32_t x, int32_t y) {
  *          mult7(7) -> 49
  */
 int32_t mult7(int32_t x) {
-    return -1;
+    return (x<<3)-x;
 }
 
 /*
@@ -250,7 +262,8 @@ int32_t byteEmP(int32_t x, uint8_t p) {
  *
  */
 int32_t negacaoLogica(int32_t x) {
-    return ~((x>>8)+((x>>7)&0x1)+((x>>6)&0x1)+((x>>5)&0x1)+((x>>4)&0x1)+((x>>3)&0x1)+((x>>2)&0x1)+(x&0x1));
+
+    return (~(((x>>6)+(x>>5)+(x>>4)+(x>>3)+(x>>2)+(x>>1)+x)&0xF0000001))&0x00000001;
 }
 
 void teste(int32_t saida, int32_t esperado) {
@@ -357,7 +370,7 @@ int main() {
     puts("");
 
     puts("Teste: bitEmP");
-    teste(bitEmP(1, 0), 1);   //    b01 => retorna 1
+    teste(bitEmP(1, 0), 1);   //  1    b01 => retorna 1
     teste(bitEmP(1, 1), 0);   //    b01 => retorna 0
     teste(bitEmP(2, 0), 0);   //    b10 => retorna 0
     teste(bitEmP(2, 1), 1);   //    b10 => retorna 1
