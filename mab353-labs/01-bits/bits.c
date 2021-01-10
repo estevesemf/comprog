@@ -111,7 +111,7 @@ int32_t mod8(int32_t x) {
  */
 int32_t ehPositivo(int32_t x) {
   /*Para saber se um número binário é negativo, basta saber se o primeiro digito é 1, como está em hexadecimal,
-  o primeiro byte tem que maior que oito. Resolvemos isto usando a mascara para selecionar, e depois negamos.*/
+  o primeiro byte tem que maior ser que oito. Resolvemos isto usando a mascara para selecionar, e depois negamos.*/
     return !(x & 0x80000000);
 }
 
@@ -129,7 +129,7 @@ int32_t ehPositivo(int32_t x) {
  *          negativo(42) -> -42
  */
 int32_t negativo(int32_t x) {
-  /*Basta utilzar a lógica de complemento a Dois, invertendo os bitis e somando 1. */
+  /*Basta utilzar a lógica de complemento a Dois, invertendo os bits e somando 1. */
     return ~x+1 ;
 }
 
